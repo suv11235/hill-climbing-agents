@@ -14,7 +14,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "pytest-cov>=4.0"]
 rl = ["gymnasium>=1.0"]
-all = ["hillclimb[dev,rl]"]
+llm = ["openai>=1.0"]
+all = ["hillclimb[dev,rl,llm]"]
 
 [project.scripts]
 hillclimb = "hillclimb.cli:main"

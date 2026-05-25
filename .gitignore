@@ -11,3 +11,8 @@ htmlcov/
 venv/
 *.png
 /tmp/
+.env
+.env.*
+!.env.example
+benchmark_results.json
+results/

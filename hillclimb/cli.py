@@ -73,6 +73,11 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("list", help="List available prototypes")
 
+    bench_p = sub.add_parser("benchmark", help="Run baseline + LLM benchmark suite")
+    bench_p.add_argument("--baseline-only", action="store_true")
+    bench_p.add_argument("--model", default="gpt-4o-mini")
+    bench_p.add_argument("--output", default="benchmark_results.json")
+
     args = parser.parse_args(argv)
 
     if args.command == "run":
@@ -92,6 +97,17 @@ def main(argv: list[str] | None = None) -> int:
         for name in ["finance_research", "lean_prover", "hypothesis_tournament", "portfolio_optimizer"]:
             print(f"  {name:25s} → python -m {PROTOTYPES[name]}")
         return 0
+
+    if args.command == "benchmark":
+        from hillclimb.benchmarks.run_experiments import run_all
+        import json
+        from pathlib import Path
+
+        summary = run_all(use_llm=not args.baseline_only, model=args.model)
+        Path(args.output).write_text(json.dumps(summary, indent=2))
+        print(f"\nResults: {args.output}")
+        print(f"All targets met: {summary['all_targets_met']}")
+        return 0 if summary["all_targets_met"] else 1
 
     parser.print_help()
     return 0
