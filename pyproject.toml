@@ -1,0 +1,32 @@
+[project]
+name = "hillclimb"
+version = "0.1.0"
+description = "Hill climbing harnesses for AI agent experimentation in science and software"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pillow>=10.0",
+    "pytesseract>=0.3.10",
+    "scikit-learn>=1.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=4.0"]
+rl = ["gymnasium>=1.0"]
+all = ["hillclimb[dev,rl]"]
+
+[project.scripts]
+hillclimb = "hillclimb.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hillclimb*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
