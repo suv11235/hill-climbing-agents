@@ -2,7 +2,7 @@
 
 Experimental harnesses for **hill climbing** as the central optimization mechanism for AI agents in **scientific discovery** and **software development**.
 
-Based on research synthesis from Nov 2025 – May 2026 (see [docs/RESEARCH.md](docs/RESEARCH.md)). Key finding: **greedy hill climbing with early stopping is the strong default** when LLMs serve as proposal generators (Li et al., arXiv:2603.27415).
+Based on recent research on the topic until May, 2026 (see [docs/RESEARCH.md](docs/RESEARCH.md)). Key finding: **greedy hill climbing with early stopping is the strong default** when LLMs serve as proposal generators (Li et al., arXiv:2603.27415).
 
 ## Architecture
 
