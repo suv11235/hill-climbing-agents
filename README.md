@@ -25,6 +25,7 @@ All prototypes implement this loop via `HillClimber` in `hillclimb/core/harness.
 |---|-----------|-------------|-------------|
 | 1 | **RL Interface Discovery** | LIMEN (arXiv:2605.03408) | `python -m hillclimb.software.rl_interface.run --compare --hard` |
 | 2 | **OCR Self-Iterate** | MinerU Judge-and-Refine, OCR-Agent | `python -m hillclimb.software.ocr_self_iterate.run --rounds 10` |
+| 2b | **OCR Workflow** (orchestrator + sub-agents) | Agentic workflow hill climb | `python -m hillclimb.software.ocr_self_iterate.workflow.run --rounds 10` |
 | 3 | **SIFT Coding Self-Improvement** | SIFT, SICA | `python -m hillclimb.software.sift_coding.run --task reverse_string` |
 | 4 | **Config Discovery** | CliffSearch, Li et al. | `python -m hillclimb.software.config_discovery.run` |
 
