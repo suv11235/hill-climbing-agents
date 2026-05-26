@@ -16,3 +16,4 @@ venv/
 !.env.example
 benchmark_results.json
 results/
+results/

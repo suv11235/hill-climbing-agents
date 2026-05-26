@@ -94,14 +94,14 @@ class WorkflowProposer:
         no_refine = diagnostics.get("avg_refine_rounds", 0) == 0 and low_accuracy
 
         if confusion > 0:
-            return self._rng.choice(["extract", "refine", "validate"])
+            return self._rng.choice(["extractor", "refiner", "validator"])
         if missing > 0:
-            return self._rng.choice(["extract", "refine", "preprocess"])
+            return self._rng.choice(["extractor", "refiner", "preprocessor"])
         if no_refine:
             return "orchestrator"
         if low_accuracy:
-            return self._rng.choice(["preprocess", "layout", "extract"])
-        return self._rng.choice(["orchestrator", "preprocess", "extract", "validate", "refiner"])
+            return self._rng.choice(["preprocessor", "layout", "extractor"])
+        return self._rng.choice(["orchestrator", "preprocessor", "extractor", "validator", "refiner"])
 
     def _mutate_orchestrator(self, config: WorkflowConfig) -> None:
         options = PROMPT_MUTATIONS["orchestrator"]
